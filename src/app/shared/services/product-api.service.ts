@@ -7,18 +7,18 @@ import { map } from 'rxjs';
   providedIn: 'root'
 })
 export class ProductApiService {
-http = inject(HttpClient);
-constructor() { }
+  http = inject(HttpClient);
+  constructor() { }
 
-getProducts(){
-  return this.http.get<IProduct[]>('https://fakestoreapi.com/products')
-  .pipe(
-    map(((products)=> {
-      return products.map((product)=>{
-        return {...product, quantity:1}
-      })
-    }))
-  )
-}
+  getProducts() {
+    return this.http.get<IProduct[]>('https://fakestoreapi.com/products')
+      .pipe(
+        map(((products) => {
+          return products.map((product) => {
+            return { ...product, quantity: 1 }
+          })
+        }))
+      )
+  }
 
 }
